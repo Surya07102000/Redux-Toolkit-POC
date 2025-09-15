@@ -18,6 +18,7 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.*
 
 # Logs
 logs/
@@ -87,6 +88,8 @@ temp/
 !.vscode/launch.json
 !.vscode/extensions.json
 .idea/
+.history/
+.fleet/
 *.swp
 *.swo
 *~
@@ -118,3 +121,6 @@ junit.xml
 # Misc
 *.tgz
 *.tar.gz
+.early.coverage
+.DS_Store
+Thumbs.db

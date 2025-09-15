@@ -1,6 +1,6 @@
 # Redux Toolkit POC
 
-A comprehensive proof-of-concept demonstrating Redux Toolkit implementation with React. This project showcases modern Redux patterns, async operations, and best practices for state management with a beautiful, responsive UI.
+A comprehensive Proof of Concept (POC) demonstrating Redux Toolkit implementation for state management in a React application. This project showcases modern Redux patterns, custom hooks, selectors, middleware, and RTK Query for API management with a beautiful, responsive UI.
 
 ## 🚀 Live Demo
 
@@ -8,26 +8,46 @@ The application is running at `http://localhost:5173/` and features:
 - **Modern UI Design** with gradient background and card-based layout
 - **Interactive Counter** with styled buttons and animations
 - **Dynamic Todo List** with CRUD operations and async data fetching
+- **User Authentication** with login/logout functionality
+- **Theme System** with light/dark mode toggle
+- **Notification System** with toast notifications
+- **Modal Management** for user interactions
+- **Posts Management** with filtering and favorites
+- **RTK Query Integration** for advanced API management
 - **Responsive Design** that works on all screen sizes
+
+## 🔐 Login (Mock Auth)
+
+Use the built‑in mock credentials to log in:
+
+- Username: `john_doe` (or `jane_smith`, `bob_wilson`)
+- Password: `password`
+
+After login, you’ll see a welcome message, Profile button, and the Posts section actions become available.
 
 ## ✨ Features
 
-### Redux Fundamentals Demonstrated
-- **State Management**: Centralized state with Redux store
-- **Actions**: Synchronous and asynchronous actions
-- **Reducers**: State updates using Redux Toolkit's `createSlice`
-- **Store**: Configured with `configureStore`
+### Core Redux Toolkit Features
+- **Centralized Store Configuration** with Redux DevTools integration
+- **Feature Slices** for organized state management
+- **Custom Middleware** for logging and error handling
+- **Memoized Selectors** for performance optimization
+- **Custom Hooks** for clean component APIs
 
-### Redux Toolkit Features
-- **configureStore**: Simplified store configuration with built-in middleware
-- **createSlice**: Reduces boilerplate for actions and reducers
-- **createAsyncThunk**: Handles async operations with loading states
-- **Immer Integration**: Mutative-looking code that's actually immutable
+### Feature Slices
+- **Counter Slice** - Simple counter with increment/decrement/reset
+- **Todo Slice** - Todo management with async operations
+- **User Slice** - Authentication and user profile management
+- **UI Slice** - Global UI state (theme, modals, notifications)
+- **Posts Slice** - Blog posts with filtering, pagination, and favorites
 
-### React Integration
-- **useSelector**: Accessing state from components
-- **useDispatch**: Dispatching actions from components
-- **Provider**: Wrapping the app with Redux store
+### Advanced Features
+- **RTK Query** - Modern data fetching with caching and background updates
+- **Theme System** - Light/dark theme with persistence
+- **Notification System** - Toast notifications with auto-dismiss
+- **Modal Management** - Centralized modal state
+- **Error Handling** - Comprehensive error states and recovery
+- **Loading States** - Granular loading indicators
 
 ### UI/UX Features
 - **Modern Design**: Beautiful gradient background with card-based layout
@@ -42,14 +62,24 @@ The application is running at `http://localhost:5173/` and features:
 ```
 src/
 ├── app/
-│   └── store.js          # Redux store configuration
+│   └── store.js                 # Store configuration
 ├── features/
-│   ├── counterSlice.js   # Counter feature slice
-│   └── todoSlice.js      # Todo feature slice with async operations
-├── App.jsx               # Main application component
-├── main.jsx              # Application entry point
-├── index.css             # Modern CSS with custom properties
-└── index.html            # HTML entry point
+│   ├── counterSlice.js         # Counter feature
+│   ├── todoSlice.js            # Todo management
+│   ├── userSlice.js            # User authentication
+│   ├── uiSlice.js              # UI state management
+│   ├── postsSlice.js           # Posts management
+│   ├── apiSlice.js             # RTK Query API
+│   ├── selectors.js            # Memoized selectors
+│   └── index.js                # Feature exports
+├── hooks/
+│   └── useRedux.js             # Custom Redux hooks
+├── components/
+│   └── RTKQueryExample.jsx     # RTK Query demo
+├── App.jsx                     # Main application
+├── main.jsx                    # Application entry point
+├── index.css                   # Modern CSS with custom properties
+└── index.html                  # HTML entry point
 ```
 
 ## 🎯 Features Implemented
@@ -158,6 +188,11 @@ extraReducers: (builder) => {
    npm run build
    ```
 
+5. **Login**
+   - Click the Login button on the top right
+   - Enter one of the mock usernames and `password`
+   - Explore posts, favorites, and notifications
+
 ## 🎨 UI/UX Highlights
 
 - **Gradient Background**: Beautiful purple-to-blue gradient
@@ -186,6 +221,29 @@ extraReducers: (builder) => {
 - **react-redux**: React bindings for Redux
 - **react**: UI library
 - **vite**: Build tool and dev server
+
+## 🧭 Project Usage Guide
+
+- Counter: Click +1, -1, Reset to update the global counter
+- Todos: Add a todo, toggle by clicking the text, delete with the button
+- Theme: Toggle light/dark mode with the header button
+- Notifications: Actions show toasts; they auto‑dismiss
+- Posts: After logging in, create a post, search, and mark favorites
+- RTK Query: See `components/RTKQueryExample.jsx` for query/mutation usage
+
+## 🧰 Developer Notes
+
+- Store is at `src/app/store.js` (lowercase `app`). Import via `./app/store`
+- Feature exports are centralized in `src/features/index.js`
+- Custom hooks are in `src/hooks/useRedux.js`
+- API endpoints live in `src/features/apiSlice.js` (RTK Query)
+
+## ❗ Troubleshooting
+
+- Import error for `./app/store`: ensure the folder is `app` (lowercase) and the file exists
+- Unexpected "type" in store: remove TypeScript-only exports from JS files
+- UI is blank: open DevTools Console and check for missing named exports; align names with `src/features/index.js`
+- RTK Query network errors: this demo calls `jsonplaceholder.typicode.com`; ensure you have internet access
 
 ## 🎯 What You'll Learn
 
